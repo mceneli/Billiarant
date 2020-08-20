@@ -53,7 +53,7 @@ public class ManagerScript : MonoBehaviour
 
     void shoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             wball.GetComponent<Rigidbody>().AddForce((aimPosition - wball.position) * force, ForceMode.Impulse);
         }
@@ -64,6 +64,16 @@ public class ManagerScript : MonoBehaviour
         LineRenderer lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, wball.position);
         lineRenderer.SetPosition(1, aimPosition);
+
+        if (Input.GetMouseButton(0))
+        {
+            lineRenderer.enabled = true;
+        }
+        else
+        {
+            lineRenderer.enabled = false;
+        }
+        
     }
 
 }
